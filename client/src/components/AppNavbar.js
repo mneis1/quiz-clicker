@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 
 import {
-    Collapse,
     Navbar,
-    NavbarToggler,
     NavbarBrand,
     Nav,
     NavItem,
@@ -12,32 +10,19 @@ import {
 } from 'reactstrap';
 
 class AppNavBar extends Component {
-    state = {
-        isOpen: false
-    };
-
-    toggle = () => {
-        this.setState({
-            isOpen: !this.state.isOpen
-        });
-    };
-
     render() {
         return (
             <div>
                 <Navbar color="dark" dark expands="sm" className="mb-5">
                     <Container>
-                        <NavbarBrand href="/">Basic User Creation</NavbarBrand>
-                        <NavbarToggler onClick={this.toggle} />
-                        <Collapse isOpen={this.state.isOpen} navbar>
-                            <Nav className="ml-auto" navbar>
-                                <NavItem>
-                                    <NavLink href="https://github.com/KyleNehman">
-                                        Github
-                                    </NavLink>
-                                </NavItem>
-                            </Nav>
-                        </Collapse>
+                        <NavbarBrand href="/">Click Ease</NavbarBrand>
+                        <Nav className="ml-auto" navbar>
+                            <NavItem>
+                                <NavLink href="https://github.com/KyleNehman">
+                                    Signup
+                                </NavLink>
+                            </NavItem>
+                        </Nav>
                     </Container>
                 </Navbar>
             </div>

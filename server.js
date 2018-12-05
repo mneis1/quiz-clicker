@@ -6,9 +6,11 @@ const app = express();
 const db = require('./config/keys').mongoURI;
 const port = process.env.PORT || 5000;
 const users = require('./route/api/users');
+const register = require('./route/api/register');
 
 app.use(bodyParser.json());
 app.use('/api/users', users);
+app.use('/api/register', register);
 
 
 mongoose.connect(db)

@@ -1,4 +1,4 @@
-import {GET_USERS, ADD_USER, DELETE_USER, USERS_LOADING, ADD_USER_EXISTS} from "../actions/types";
+import {GET_USERS, ADD_USER, DELETE_USER, USERS_LOADING, ADD_USER_EXISTS, USER_LOGIN} from "../actions/types";
 
 const initialState = {
     users: [],
@@ -33,6 +33,13 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 loading: true
+            };
+        case USER_LOGIN:
+            console.log(action.payload);
+
+            return {
+                ...state,
+                users: action.payload
             };
         default:
             return state;

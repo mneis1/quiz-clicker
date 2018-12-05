@@ -14,37 +14,25 @@ router.get('/', (req, res) => {
 });
 
 // route @post api/users
-// @desc Creates and insers User to db
+// @desc Checks if the username and password are correct
 // @access public
 router.post('/', (req, res) => {
-    const newUser = new User({
-        name: req.body.name,
-        email: req.body.email,
-        password: req.body.password
-    });
-
     User.findOne({"email": req.body.email})
         .then(user => {
                 if (user == null) {
-                    newUser.save()
-                        .then(user => res.json(user));
-                } else {
-//                    console.log(user);
                     res.status(404);
-                    res.json({"msg": "That user already exists!"});
+                    res.json({"msg": "User with that email does not exist"});
+                } else {
+                    if (user.validPassword(req.body.password)) {
+                        res.status(200);
+                        res.json({"msg": "Logged in!", "teacher": user.type});
+                    } else {
+                        res.status(401);
+                        res.json({"msg": "Incorrect password"});
+                    }
                 }
             }
         )
-
-/*    User.findOne({"email": req.body.email})
-        .then(err =>
-            res.status(404).json({"msg": "That user already exists!"})
-        )
-        .catch(user =>
-            newUser.save()
-                .then(user => res.json(user))
-        )*/
-
 });
 
 // route @delete api/users

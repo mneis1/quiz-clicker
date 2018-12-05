@@ -13,6 +13,7 @@ import {
 import {connect} from 'react-redux';
 import {addUser} from '../actions/userActions'
 
+
 class UserModal extends Component {
     state = {
         modal: false,
@@ -47,7 +48,7 @@ class UserModal extends Component {
 
     render() {
         return (
-            <div>
+            <div className={styles.center}>
                 <Button
                     color="dark"
                     style={{marginBottom: '2rem'}}
@@ -69,6 +70,7 @@ class UserModal extends Component {
                                 </Label>
                                 <Input
                                     type="text"
+                                    style={{marginBottom: '2rem'}}
                                     name="name"
                                     id="user"
                                     placeholder="Name"
@@ -76,6 +78,7 @@ class UserModal extends Component {
                                 />
                                 <Input
                                     type="text"
+                                    style={{marginBottom: '2rem'}}
                                     name="email"
                                     id="user"
                                     placeholder="Email Address"
@@ -83,6 +86,7 @@ class UserModal extends Component {
                                 />
                                 <Input
                                     type="text"
+                                    style={{marginBottom: '2rem'}}
                                     name="password"
                                     id="user"
                                     placeholder="Password"
