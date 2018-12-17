@@ -1,6 +1,8 @@
 const express = require('express');
+const jwt = require('jsonwebtoken');
 const router  = express.Router();
 
+const settings = require('../../config/settings');
 const User = require('../../model/User');
 
 
@@ -24,8 +26,18 @@ router.post('/', (req, res) => {
                     res.json({"msg": "User with that email does not exist"});
                 } else {
                     if (user.validPassword(req.body.password)) {
-                        res.status(200);
-                        res.json({"msg": "Logged in!", "teacher": user.type});
+
+                        jwt.sign({
+                            "_id": user._id,
+                            "email": user.email,
+                            "name": user.name,
+                            "type": user.type
+                        }, settings.secret, (err, token) => {
+                            res.json({
+                                token: token
+                            });
+                        });
+
                     } else {
                         res.status(401);
                         res.json({"msg": "Incorrect password"});
@@ -34,6 +46,34 @@ router.post('/', (req, res) => {
             }
         )
 });
+
+// route @post api/users/verify
+// @desc Verifies if a JWT token is valid
+// @access public
+router.post('/verify', verifyJWT, (req, res) => {
+    jwt.verify(req.token, settings.secret, (err, data) => {
+        if (err) {
+            res.sendStatus(403);
+            return;
+        }
+
+        res.json({
+            userData: data,
+        })
+    });
+});
+
+function verifyJWT(req, res, next) {
+    const jwtHeader  = req.headers['authorization'];
+
+    if (typeof jwtHeader === 'undefined') {
+        res.sendStatus(403);
+        return;
+    }
+
+    req.token = jwtHeader;
+    next();
+}
 
 // route @delete api/users
 // @desc deletes an user from db

@@ -29,11 +29,7 @@ class LoginForm extends Component {
         console.log("Email: " + this.state.email);
         console.log("Password: " + this.state.password);
 
-        console.log(this.props.login(this.state));
-        /*
-        this.setState({"email": null});
-        this.setState({"password": null});
-        */
+        this.props.login(this.state);
     };
 
     render() {
