@@ -48,14 +48,14 @@ class LoginForm extends Component {
                     <FormGroup>
                         <Input
                             type="text"
-                            style={{marginBottom: '2rem'}}
+                            style={{marginBottom: '2rem', width: "75%"}}
                             name="email"
                             placeholder="Email Address"
                             onChange={this.onChange}
                         />
                         <Input
                             type="password"
-                            style={{marginBottom: '2rem'}}
+                            style={{marginBottom: '2rem', width: "75%"}}
                             name="password"
                             placeholder="Password"
                             onChange={this.onChange}
