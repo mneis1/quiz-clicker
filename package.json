@@ -1,22 +1,32 @@
 {
-  "name": "quiz-clicker",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "next": "^7.0.0",
-    "react": "^16.5.2",
-    "react-dom": "^16.5.2",
-    "react-scripts": "1.1.5"
-  },
+  "name": "click-ease",
+  "version": "0.0.1",
+  "description": "",
+  "main": "server.js",
   "scripts": {
-    "start": "next start",
-    "build": "next build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "dev": "next"
+    "client-install": "npm install --prefix client",
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^3.0.2",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.18.3",
+    "concurrently": "^4.1.0",
+    "event-stream": "^4.0.1",
+    "express": "^4.16.4",
+    "jsonwebtoken": "^8.4.0",
+    "mongoose": "^5.3.12",
+    "morgan": "^1.9.1",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "universal-cookie": "^3.0.7"
   },
   "devDependencies": {
-    "webpack": "^4.20.1",
-    "webpack-cli": "^3.1.1"
+    "nodemon": "^1.18.6"
   }
 }
