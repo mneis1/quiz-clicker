@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
-import ToggleModeButton from "./ToggleModeButton";
+
 import {connect} from 'react-redux';
-import TeacherView from './TeacherView';
 
 import {verifyStudent, verifyTeacher} from '../actions/userActions'
 import {Container} from "reactstrap";
 import {Redirect} from "react-router";
+import StudentView from "./StudentView";
 
-class StudentView extends Component {
+class TeacherView extends Component{
 
     state = {
         redirect: false,
@@ -22,34 +22,21 @@ class StudentView extends Component {
         }
     }
 
-
-    render () {
+    render() {
         if (this.state.redirect) {
             return <Redirect to='/'/>;
         }
 
-        return(
+        return (
             <Container>
-            {
-                this.props.teacher ?
-               "Teacher"
-                   :
-               "Student"
-            }
-            <TeacherView/>
-            {
-                this.props.teacher ?
-                <ToggleModeButton/>
-                    :
-                <div/>
-            }
+                Cool it works!
             </Container>
         );
     }
 }
 
 const mapStateToProps = (state) => ({
-    token: state.users.token,
+    token: state.user.token,
     teacher: state.users.teacher
 });
 
