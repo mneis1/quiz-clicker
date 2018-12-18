@@ -36,7 +36,6 @@ class TeacherView extends Component{
 }
 
 const mapStateToProps = (state) => ({
-    token: state.user.token,
     teacher: state.users.teacher
 });
 
