@@ -7,6 +7,8 @@ import {
     TOGGLE_MODE,
     VALID_STUDENT,
     INVALID_STUDENT,
+    VALID_TEACHER,
+    INVALID_TEACHER,
     LOGOUT
 } from "./types";
 
@@ -53,6 +55,20 @@ export const verifyStudent = (token) => dispatch => {
             dispatch({
                 type: INVALID_STUDENT
             })
+    );
+};
+
+export const verifyTeacher = (token) => dispatch => {
+    axios
+        .post('/api/users/isTeacher', {token})
+        .then(res =>
+            dispatch({
+                type: VALID_TEACHER
+            })
+        ).catch(res =>
+        dispatch({
+            type: INVALID_TEACHER
+        })
     );
 };
 

@@ -7,6 +7,8 @@ import {
     USER_LOGIN_FAIL,
     VALID_STUDENT,
     INVALID_STUDENT,
+    VALID_TEACHER,
+    INVALID_TEACHER,
     LOGOUT
 } from "../actions/types";
 
@@ -56,6 +58,16 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 token: null
+            };
+        case VALID_TEACHER:
+            return {
+                ...state,
+                teacher: true
+            };
+        case INVALID_TEACHER:
+            return {
+                ...state,
+                teacher: false
             };
         case LOGOUT:
             console.log("Logout");

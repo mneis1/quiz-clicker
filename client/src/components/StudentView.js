@@ -2,18 +2,20 @@ import React, {Component} from 'react';
 import ToggleModeButton from "./ToggleModeButton";
 import {connect} from 'react-redux';
 
-import {verifyStudent} from '../actions/userActions'
+import {verifyStudent, verifyTeacher} from '../actions/userActions'
 import {Container} from "reactstrap";
 import {Redirect} from "react-router";
 
 class StudentView extends Component {
 
     state = {
-        redirect: false
+        redirect: false,
+        teacher: false
     };
 
     componentDidMount() {
-        this.props.verifyStudent();
+        this.props.verifyStudent(this.props.token);
+        this.props.verifyTeacher(this.props.token);
         if (!this.props.token) {
             this.setState({redirect: true});
         }
@@ -27,14 +29,26 @@ class StudentView extends Component {
 
         return(
             <Container>
-                    <ToggleModeButton/>
+            {
+                this.props.teacher ?
+               "Teacher"
+                   :
+               "Student"
+            }
+            {
+                this.props.teacher ?
+                <ToggleModeButton/>
+                    :
+                <div/>
+            }
             </Container>
         );
     }
 }
 
 const mapStateToProps = (state) => ({
-    token: state.users.token
+    token: state.users.token,
+    teacher: state.users.teacher
 });
 
-export default connect(mapStateToProps, {verifyStudent})(StudentView);
+export default connect(mapStateToProps, {verifyStudent, verifyTeacher})(StudentView);

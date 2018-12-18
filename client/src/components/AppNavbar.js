@@ -21,7 +21,6 @@ class AppNavBar extends Component {
         );
         console.log("Rendering");
         if (this.props.token) {
-            console.log("In here");
             navLink = (
                 <NavLink href="/">
                     Logout

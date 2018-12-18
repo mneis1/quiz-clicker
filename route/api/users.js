@@ -46,6 +46,29 @@ router.post('/', (req, res) => {
             }
         )
 });
+// route @post api/isStudent
+// @desc Checks if the user is a teacher or not
+// @access public
+router.post('/isStudent', (req, res) => {
+    jwt.verify(req.body.token, settings.secret, (err, data) => {
+        if (err) {
+            console.log(err);
+            res.sendStatus(403);
+            return;
+        }
+
+        User.findOne({"email": data.email})
+            .then(user => {
+                    if (user == null) {
+                        res.sendStatus(404);
+                    }
+                    res.sendStatus(200);
+                }
+            )
+    });
+
+});
+
 
 // route @post api/isTeacher
 // @desc Checks if the user is a teacher or not
@@ -53,6 +76,7 @@ router.post('/', (req, res) => {
 router.post('/isTeacher', (req, res) => {
     jwt.verify(req.body.token, settings.secret, (err, data) => {
         if (err) {
+            console.log(err);
             res.sendStatus(403);
             return;
         }
