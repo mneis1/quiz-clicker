@@ -4,38 +4,33 @@ import {GET_USERS, ADD_USER, DELETE_USER, USERS_LOADING, ADD_USER_EXISTS, USER_L
 const cookies = new Cookies();
 
 const initialState = {
-    users: [],
-    loading: false
+    registerSuccess: null,
+    loginSuccess: null,
+    userExists: null
 };
 
 export default function(state = initialState, action) {
     switch (action.type) {
         case GET_USERS:
             return {
-                ...state,
-                users: action.payload,
-                loading: false
+                ...state
             };
         case DELETE_USER:
             return {
                 ...state,
-                users: state.users.filter(user => user._id !== action.payload)
             };
         case ADD_USER:
             return {
-                ...state,
-                users: [...state.users, action.payload]
+                registerSuccess: true
             };
         case ADD_USER_EXISTS:
-            console.log("hola");
-            console.log(action.payload);
             return {
-                ...state
+                registerSuccess: false,
+                userExists: true
             };
         case USERS_LOADING:
             return {
-                ...state,
-                loading: true
+                ...state
             };
         case USER_LOGIN:
             // Store return (jwt) in cookies for future use
@@ -43,14 +38,14 @@ export default function(state = initialState, action) {
 
             // No reason to return the token again if it's being stored in the cookie.
             return {
-                ...state
+                ...state,
+                loginSuccess: true
             };
         case USER_LOGIN_FAIL:
             console.log(action.payload);
 
             return {
-                ...state,
-                users: action.payload
+                ...state
             };
         default:
             return state;

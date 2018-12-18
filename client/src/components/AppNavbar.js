@@ -18,7 +18,7 @@ class AppNavBar extends Component {
                         <NavbarBrand href="/">Click Ease</NavbarBrand>
                         <Nav className="ml-auto" navbar>
                             <NavItem>
-                                <NavLink href="https://github.com/KyleNehman">
+                                <NavLink href="/register">
                                     Signup
                                 </NavLink>
                             </NavItem>

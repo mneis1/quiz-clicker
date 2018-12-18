@@ -1,20 +1,20 @@
 import React, {Component} from 'react';
 import store from "../store";
 import AppNavBar from "./AppNavbar";
-import LoginForm from "./LoginForm";
+import RegisterForm from "./RegisterForm";
 import Provider from "react-redux/es/components/Provider";
 
-class Login extends Component {
+class Register extends Component {
     render () {
         return (
             <Provider store={store}>
-                <div className="Login">
+                <div className="Register">
                     <AppNavBar/>
-                    <LoginForm/>
+                    <RegisterForm/>
                 </div>
             </Provider>
         );
     }
 }
 
-export default Login;
+export default Register;

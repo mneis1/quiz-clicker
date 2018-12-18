@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {
+    Alert,
     Button,
     Container,
     Form,
@@ -7,6 +8,7 @@ import {
     Input
 } from 'reactstrap';
 
+import {Redirect} from 'react-router-dom'
 import {connect} from 'react-redux';
 import {login} from '../actions/userActions'
 
@@ -33,8 +35,18 @@ class LoginForm extends Component {
     };
 
     render() {
+        if (this.props.success) {
+            return <Redirect to='/about'/>
+        }
+
         return (
             <Container>
+                {
+                    this.props.registered ?
+                        <Alert color="success">Registered successfully, please log in</Alert>
+                        :
+                        <div></div>
+                }
                 <Form onSubmit={this.onSubmit}>
                     <FormGroup>
                         <Input
@@ -67,8 +79,8 @@ class LoginForm extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    "email": state.email,
-    "password": state.pass
+    success: state.users.loginSuccess,
+    registered: state.users.registerSuccess
 });
 
 export default connect(mapStateToProps, {login})(LoginForm);

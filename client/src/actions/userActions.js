@@ -38,9 +38,9 @@ export const login = (user) => dispatch => {
         );
 };
 
-export const addUser = (user) => dispatch => {
+export const register = (regObj) => dispatch => {
     axios
-        .post('/api/register', user)
+        .post('/api/register', regObj)
         .then(res =>
             dispatch({
                 type: ADD_USER,

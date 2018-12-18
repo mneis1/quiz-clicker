@@ -20,22 +20,10 @@ router.post('/', (req, res) => {
                     newUser.save()
                         .then(user => res.json(user));
                 } else {
-//                    console.log(user);
                     res.status(404);
-                    res.json({"msg": "That user already exists!"});
                 }
             }
         )
-
-    /*    User.findOne({"email": req.body.email})
-            .then(err =>
-                res.status(404).json({"msg": "That user already exists!"})
-            )
-            .catch(user =>
-                newUser.save()
-                    .then(user => res.json(user))
-            )*/
-
 });
 
 module.exports = router;
