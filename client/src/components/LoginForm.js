@@ -28,15 +28,12 @@ class LoginForm extends Component {
     onSubmit = (event) => {
         event.preventDefault();
 
-        console.log("Email: " + this.state.email);
-        console.log("Password: " + this.state.password);
-
         this.props.login(this.state);
     };
 
     render() {
         if (this.props.success) {
-            return <Redirect to='/about'/>
+            return <Redirect to='/view'/>
         }
 
         return (

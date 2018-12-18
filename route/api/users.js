@@ -47,6 +47,32 @@ router.post('/', (req, res) => {
         )
 });
 
+// route @post api/isTeacher
+// @desc Checks if the user is a teacher or not
+// @access public
+router.post('/isTeacher', (req, res) => {
+    jwt.verify(req.body.token, settings.secret, (err, data) => {
+        if (err) {
+            res.sendStatus(403);
+            return;
+        }
+
+        User.findOne({"email": data.email})
+            .then(user => {
+                    if (user == null) {
+                        res.sendStatus(404);
+                    } else {
+                        if (!user.type) {
+                            res.sendStatus(401);
+                        }
+                        res.sendStatus(200);
+                    }
+                }
+            )
+    });
+
+});
+
 // route @post api/users/verify
 // @desc Verifies if a JWT token is valid
 // @access public

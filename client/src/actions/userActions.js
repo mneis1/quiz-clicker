@@ -1,26 +1,14 @@
 import axios from 'axios';
-import {GET_USERS, ADD_USER, DELETE_USER, USERS_LOADING, ADD_USER_EXISTS, USER_LOGIN, USER_LOGIN_FAIL} from "./types";
-
-export const getUsers = () => dispatch => {
-    dispatch(setUsersLoading());
-    axios
-        .get('/api/users')
-        .then(res =>
-            dispatch({
-                type: GET_USERS,
-                payload: res.data
-        }));
-};
-
-export const deleteUser = (id) => dispatch => {
-    axios
-        .delete(`/api/users/${id}`)
-        .then(res =>
-        dispatch({
-            type: DELETE_USER,
-            payload: id
-        }));
-};
+import {
+    ADD_USER,
+    ADD_USER_EXISTS,
+    USER_LOGIN,
+    USER_LOGIN_FAIL,
+    TOGGLE_MODE,
+    VALID_STUDENT,
+    INVALID_STUDENT,
+    LOGOUT
+} from "./types";
 
 export const login = (user) => dispatch => {
     axios
@@ -54,8 +42,36 @@ export const register = (regObj) => dispatch => {
         );
 };
 
-export const setUsersLoading = () => {
-    return {
-        type: USERS_LOADING
-    };
+export const verifyStudent = (token) => dispatch => {
+    axios
+        .post('/api/users/isStudent', {token})
+        .then(res =>
+            dispatch({
+                type: VALID_STUDENT
+            })
+        ).catch(res =>
+            dispatch({
+                type: INVALID_STUDENT
+            })
+    );
 };
+
+export const toggleMode = (token) => dispatch => {
+    axios
+        .post('/api/users/isTeacher', {token})
+        .then(res =>
+            dispatch({
+                type: TOGGLE_MODE,
+            })
+        ).catch(res =>
+            dispatch({
+                type: null,
+            })
+    );
+};
+
+export const logout = () => dispatch => {
+    dispatch({
+        type: LOGOUT
+    })
+}

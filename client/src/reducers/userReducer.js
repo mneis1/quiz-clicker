@@ -1,12 +1,20 @@
-import Cookies from 'universal-cookie';
-import {GET_USERS, ADD_USER, DELETE_USER, USERS_LOADING, ADD_USER_EXISTS, USER_LOGIN, USER_LOGIN_FAIL} from "../actions/types";
-
-const cookies = new Cookies();
+import {
+    GET_USERS,
+    ADD_USER,
+    DELETE_USER,
+    ADD_USER_EXISTS,
+    USER_LOGIN,
+    USER_LOGIN_FAIL,
+    VALID_STUDENT,
+    INVALID_STUDENT,
+    LOGOUT
+} from "../actions/types";
 
 const initialState = {
     registerSuccess: null,
     loginSuccess: null,
-    userExists: null
+    userExists: null,
+    token: null
 };
 
 export default function(state = initialState, action) {
@@ -28,17 +36,10 @@ export default function(state = initialState, action) {
                 registerSuccess: false,
                 userExists: true
             };
-        case USERS_LOADING:
-            return {
-                ...state
-            };
         case USER_LOGIN:
-            // Store return (jwt) in cookies for future use
-            cookies.set('clickEase', action.payload.token, {path: '/'});
-
-            // No reason to return the token again if it's being stored in the cookie.
             return {
                 ...state,
+                token: action.payload.token,
                 loginSuccess: true
             };
         case USER_LOGIN_FAIL:
@@ -46,6 +47,21 @@ export default function(state = initialState, action) {
 
             return {
                 ...state
+            };
+        case VALID_STUDENT:
+            return {
+                ...state
+            };
+        case INVALID_STUDENT:
+            return {
+                ...state,
+                token: null
+            };
+        case LOGOUT:
+            console.log("Logout");
+            return {
+                ...state,
+                token: null
             };
         default:
             return state;

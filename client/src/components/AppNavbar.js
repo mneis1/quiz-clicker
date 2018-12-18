@@ -9,8 +9,26 @@ import {
     Container
 } from 'reactstrap';
 
+import {connect} from 'react-redux';
+import {logout} from '../actions/userActions'
+
 class AppNavBar extends Component {
     render() {
+        let navLink = (
+            <NavLink href="/register">
+                Signup
+            </NavLink>
+        );
+        console.log("Rendering");
+        if (this.props.token) {
+            console.log("In here");
+            navLink = (
+                <NavLink href="/">
+                    Logout
+                </NavLink>
+            );
+        }
+
         return (
             <div>
                 <Navbar color="dark" dark expands="sm" className="mb-5">
@@ -18,9 +36,7 @@ class AppNavBar extends Component {
                         <NavbarBrand href="/">Click Ease</NavbarBrand>
                         <Nav className="ml-auto" navbar>
                             <NavItem>
-                                <NavLink href="/register">
-                                    Signup
-                                </NavLink>
+                                {navLink}
                             </NavItem>
                         </Nav>
                     </Container>
@@ -30,4 +46,8 @@ class AppNavBar extends Component {
     }
 }
 
-export default AppNavBar;
+const mapStateToProps = (state) => ({
+    token: state.users.token
+});
+
+export default connect(mapStateToProps, {logout})(AppNavBar);
