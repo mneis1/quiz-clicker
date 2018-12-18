@@ -40,4 +40,4 @@ const mapStateToProps = (state) => ({
     teacher: state.users.teacher
 });
 
-export default connect(mapStateToProps, {verifyStudent, verifyTeacher})(StudentView);
+export default connect(mapStateToProps, {verifyStudent, verifyTeacher})(TeacherView);
