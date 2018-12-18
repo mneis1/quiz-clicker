@@ -28,4 +28,4 @@ const mapStateToProps = (state) => ({
     token: state.mode.token
 });
 
-export default connect(mapStateToProps, {toggleMode})(ToggleModeButton);
+export default connect()(ToggleModeButton);
