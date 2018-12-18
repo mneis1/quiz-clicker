@@ -14,9 +14,18 @@ class TeacherView extends Component{
         teacher: false
     };
 
+    componentDidMount() {
+        this.props.verifyStudent(this.props.token);
+        this.props.verifyTeacher(this.props.token);
+    }
+
     render() {
         if (this.state.redirect) {
             return <Redirect to='/'/>;
+        }
+
+        if (!this.props.teacher) {
+            return <div/>
         }
 
         return (
@@ -28,7 +37,8 @@ class TeacherView extends Component{
 }
 
 const mapStateToProps = (state) => ({
+    token: state.users.token,
     teacher: state.users.teacher
 });
 
-export default connect()(TeacherView);
+export default connect(mapStateToProps, {verifyStudent, verifyTeacher})(TeacherView);
