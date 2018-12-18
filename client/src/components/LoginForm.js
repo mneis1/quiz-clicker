@@ -63,7 +63,7 @@ class LoginForm extends Component {
 
                         <Button
                             color = "dark"
-                            style = {{marginTop: '2rem'}}
+                            style = {{marginTop: '2rem', width: "75%"}}
                             block
                         >
                             Login
