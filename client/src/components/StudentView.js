@@ -14,6 +14,15 @@ class StudentView extends Component {
         teacher: false
     };
 
+    componentDidMount() {
+        this.props.verifyStudent(this.props.token);
+        this.props.verifyTeacher(this.props.token);
+        if (!this.props.token) {
+            this.setState({redirect: true});
+        }
+    }
+
+
     render () {
         if (this.state.redirect) {
             return <Redirect to='/'/>;
