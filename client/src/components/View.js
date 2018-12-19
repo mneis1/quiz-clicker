@@ -4,6 +4,7 @@ import Provider from "react-redux/es/components/Provider";
 import StudentView from "./StudentView";
 import AppNavBar from "./AppNavbar";
 import TeacherView from "./TeacherView";
+import ToggleModeButton from "./ToggleModeButton";
 
 class View extends Component {
     state = {
@@ -22,6 +23,7 @@ class View extends Component {
                     <StudentView/>
 
                 </div>
+                <ToggleModeButton/>
             </Provider>
         );
     }
