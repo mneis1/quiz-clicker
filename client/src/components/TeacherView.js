@@ -5,7 +5,8 @@ import {connect} from 'react-redux';
 import {Container} from "reactstrap";
 import {Redirect} from "react-router";
 import {Button} from 'reactstrap';
-import QuizCreateForm from './QuizCreateForm';
+import QuizCreateForm from './forms/QuizCreateForm';
+import {verifyStudent, verifyTeacher} from "../actions/userActions";
 
 class TeacherView extends Component{
 

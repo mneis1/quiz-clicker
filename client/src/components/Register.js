@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import store from "../store";
 import AppNavBar from "./AppNavbar";
-import RegisterForm from "./RegisterForm";
+import RegisterForm from "./forms/RegisterForm";
 import Provider from "react-redux/es/components/Provider";
 
 class Register extends Component {

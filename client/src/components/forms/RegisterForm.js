@@ -10,7 +10,7 @@ import {
 
 import {Redirect} from 'react-router-dom'
 import {connect} from 'react-redux';
-import {register} from '../actions/userActions'
+import {register} from '../../actions/userActions'
 
 class RegisterForm extends Component {
 

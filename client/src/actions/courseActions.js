@@ -12,8 +12,11 @@ export const getCourses = (token) => dispatch => {
             dispatch({
                 type: COURSE_FIND,
                 payload: res.data.courses
-            })
-        );
+            }))
+        .catch(res =>
+            dispatch({
+                type: COURSE_FIND
+            }))
 };
 
 export const courseAddUser = (token, studentEmail, course) => dispatch => {
