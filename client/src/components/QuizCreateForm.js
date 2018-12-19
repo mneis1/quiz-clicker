@@ -5,6 +5,8 @@ import {connect} from 'react-redux';
 class QuizCreateForm extends Component{
 
     state = {
+        quizName: "",
+        quizTime: "",
         data: [{Question: "", Choice1: "", Choice2: "", Choice3: "", CorrectAnswer: ""}],
     }
 
@@ -15,7 +17,8 @@ class QuizCreateForm extends Component{
     }
 
     handleSubmit = (e) => {
-        const dataJSON = JSON.stringify(this.state.data);
+        const dataJSON = JSON.stringify(this.state);
+        console.log(dataJSON)
         e.preventDefault()
     }
 
@@ -28,11 +31,15 @@ class QuizCreateForm extends Component{
             this.setState({[e.target.name]: e.target.value})
         }
     }
-    render() {
-        let {data} = this.state;
+    render(){
+        let {quizName, quizTime,data} = this.state;
 
         return(
                 <form onSubmit={this.handleSubmit} onChange={this.handleChange}>
+                    <label htmlFor="name">Quiz Name: </label>
+                    <input type="text" name="quizName" id="quizName" value={quizName}/>
+                    <label htmlFor="name">Quiz question time limit: </label>
+                    <input type="text" name="quizTime" id="quizTime" value={quizTime}/>
                     <button onClick={this.addQuestion}>Add new question</button>
                     {
                         data.map((val, idx) => {
