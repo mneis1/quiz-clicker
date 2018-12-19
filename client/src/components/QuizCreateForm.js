@@ -14,6 +14,11 @@ class QuizCreateForm extends Component{
         }));
     }
 
+    submitQuiz = (e) => {
+        const dataJSON = JSON.stringify(this.state.data);
+        console.log(dataJSON)
+    }
+
     handleSubmit = (e) => {
         e.preventDefault()
     }
@@ -42,7 +47,7 @@ class QuizCreateForm extends Component{
                             );
                         })
                     }
-                    <input type="submit" value="Submit"/>
+                    <input type="submit" value="Submit" onClick={this.submitQuiz}/>
                 </form>
         );
     }
