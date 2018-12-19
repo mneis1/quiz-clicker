@@ -4,6 +4,7 @@ import Provider from "react-redux/es/components/Provider";
 import StudentView from "./StudentView";
 import AppNavBar from "./AppNavbar";
 import TeacherView from "./TeacherView";
+import {verifyStudent, verifyTeacher} from "../actions/userActions";
 
 class View extends Component {
     state = {
