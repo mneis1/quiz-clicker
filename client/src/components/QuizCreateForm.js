@@ -21,7 +21,6 @@ class QuizCreateForm extends Component{
 
     handleSubmit = (e) => {
         e.preventDefault()
-        console.log(this.state.data)
     }
 
     handleChange = (e) => {
