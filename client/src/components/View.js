@@ -16,7 +16,7 @@ class View extends Component {
             <Provider store={store}>
                 <div className="View">
                     {
-                        this.state.teacher ?  <TeacherView/> : <div/>
+                        this.props.teacher ?  <TeacherView/> : <div/>
                     }
                     <AppNavBar/>
                     <StudentView/>
