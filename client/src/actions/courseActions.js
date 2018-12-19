@@ -2,9 +2,23 @@ import axios from 'axios';
 import {
     COURSE_ADD_USER,
     COURSE_CREATE,
-    COURSE_FIND
+    COURSE_FIND,
+    COURSE_FIND_TEACHING
 } from "./types";
 
+export const getCoursesTeaching = (token) => dispatch => {
+    axios
+        .post('/api/courses/findTeaching', {token})
+        .then(res =>
+            dispatch({
+                type: COURSE_FIND_TEACHING,
+                payload: res.data.courses
+            }))
+        .catch(res =>
+            dispatch({
+                type: COURSE_FIND_TEACHING
+            }))
+};
 export const getCourses = (token) => dispatch => {
     axios
         .post('/api/courses/find', {token})

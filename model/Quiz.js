@@ -1,23 +1,23 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const CourseSchema = new Schema({
+const QuizSchema = new Schema({
     name: {
         type: String,
         required: true
     },
-    teacherId: {
+    courseId: {
         type: Schema.Types.ObjectId,
         required: true
     },
-    studentIds: {
+    questionIds : {
         type: Array,
         default: []
     },
-    quiz: {
-        type: Schema.Types.ObjectId,
-        default: null
+    limit: {
+        type: Number,
+        default: 60
     }
 });
 
-module.exports = Course = mongoose.model('course', CourseSchema);
+module.exports = Quiz = mongoose.model('quiz', QuizSchema);

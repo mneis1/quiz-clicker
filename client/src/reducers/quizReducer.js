@@ -2,23 +2,21 @@ import {
     COURSE_ADD_USER,
     COURSE_CREATE,
     COURSE_FIND,
-    COURSE_FIND_TEACHING
+    COURSE_FIND_TEACHING, QUIZ_CREATE, QUIZ_CREATE_FAILED
 } from "../actions/types";
 
 const initialState = {
-    courses: null
+    quiz: null
 };
 
 export default function(state = initialState, action) {
     switch (action.type) {
-        case COURSE_FIND:
-        case COURSE_FIND_TEACHING:
+        case QUIZ_CREATE:
             return {
                 ...state,
-                courses: action.payload
+                quiz: action.payload
             };
-        case COURSE_ADD_USER:
-        case COURSE_CREATE:
+        case QUIZ_CREATE_FAILED:
         default:
             return {
                 ...state
