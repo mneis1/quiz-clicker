@@ -4,7 +4,7 @@ import {
     QUIZ_CREATE_FAILED
 } from "./types";
 
-export const create = (quizJson) => dispatch => {
+export const createQuiz = (quizJson) => dispatch => {
     axios
         .post('/api/quiz/create', {quizJson})
         .then(res =>
