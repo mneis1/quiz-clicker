@@ -7,12 +7,12 @@ class QuizCreateForm extends Component{
     state = {
         quizName: "",
         quizTime: "",
-        data: [{Question: "", Choice1: "", Choice2: "", Choice3: "", CorrectAnswer: ""}],
+        data: [{Question: "", choices:["","","",""], CorrectAnswer: 4}],
     }
 
     addQuestion = (e) =>{
         this.setState((prevState) => ({
-            data: [...prevState.data, {Question: "", Choice1: "", Choice2: "", Choice3: "", CorrectAnswer: ""}],
+            data: [...prevState.data, {Question: "", choices:["","","",""], CorrectAnswer: 4}],
         }));
     }
 
@@ -23,7 +23,7 @@ class QuizCreateForm extends Component{
     }
 
     handleChange = (e) => {
-        if(["Question","Choice1","Choice2","Choice3","CorrectAnswer"].includes(e.target.className)){
+        if(["Question","Choice","CorrectAnswer"].includes(e.target.className)){
             let data = [...this.state.data]
             data[e.target.dataset.id][e.target.className] = e.target.value
             this.setState({data}, () => console.log(this.state.data))
@@ -57,21 +57,21 @@ class QuizCreateForm extends Component{
                                     </div>
                                     <div>
                                         <label htmlFor={choice1Id}>{`Choice 1`}</label>
-                                        <input type="text" name={choice1Id} data-id={idx} id={choice1Id} value={data[idx].Choice1} className="Choice1"/>
+                                        <input type="text" name={choice1Id} data-id={idx} id={choice1Id} value={data[idx].choices[1]} className="Choice1"/>
                                     </div>
                                     <div>
                                         <label htmlFor={choice2Id}>{`Choice 2`}</label>
-                                        <input type="text" name={choice2Id} data-id={idx} id={choice2Id} value={data[idx].Choice2} className="Choice2"/>
+                                        <input type="text" name={choice2Id} data-id={idx} id={choice2Id} value={data[idx].choices[2]} className="Choice2"/>
                                     </div>
 
                                     <div>
                                         <label htmlFor={choice3Id}>{`Choice 3`}</label>
-                                        <input type="text" name={choice3Id} data-id={idx} id={choice3Id} value={data[idx].Choice3} className="Choice3"/>
+                                        <input type="text" name={choice3Id} data-id={idx} id={choice3Id} value={data[idx].choices[3]} className="Choice3"/>
                                     </div>
 
                                     <div>
                                         <label htmlFor={correctChoiceId}>{`Correct choice`}</label>
-                                        <input type="text" name={correctChoiceId} data-id={idx} id={correctChoiceId} value={data[idx].CorrectAnswer} className="CorrectAnswer"/>
+                                        <input type="text" name={correctChoiceId} data-id={idx} id={correctChoiceId} value={data[idx].choices[4]} className="CorrectAnswer"/>
                                     </div>
 
                                 </div>
