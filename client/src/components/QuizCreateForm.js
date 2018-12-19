@@ -22,11 +22,21 @@ class QuizCreateForm extends Component{
     handleSubmit = (e) => {
         e.preventDefault()
     }
+
+    handleChange = (e) => {
+        if(["Question","Choice1","Choice2","Choice3","CorrectAnswer"].includes(e.target.className)){
+            let data = [...this.state.data]
+            data[e.target.dataset.id][e.target.className] = e.target.value
+            this.setState({data}, () => console.log(this.state.data))
+        } else {
+            this.setState({[e.target.name]: e.target.value})
+        }
+    }
     render() {
         let {data} = this.state;
 
         return(
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleSubmit} onChange={this.handleChange}>
                     <button onClick={this.addQuestion}>Add new question</button>
                     {
                         data.map((val, idx) => {
