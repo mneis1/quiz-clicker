@@ -22,11 +22,7 @@ class TeacherView extends Component{
     }
 
     onClick = () => {
-        if (!this.state.showCreateQuiz) {
-            this.state.showCreateQuiz = true;
-        }else if (this.state.showCreateQuiz){
-            this.state.showCreateQuiz = false;
-        }
+        this.setState({showCreateQuiz: !this.state.showCreateQuiz});
     };
 
 
