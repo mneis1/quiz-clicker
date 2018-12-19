@@ -1,17 +1,18 @@
 import React, {Component} from 'react';
-import ToggleModeButton from "./ToggleModeButton";
+
 import {connect} from 'react-redux';
 
-import {verifyStudent, verifyTeacher} from '../actions/userActions'
 import {Container} from "reactstrap";
 import {Redirect} from "react-router";
-import DevCreateCourseButton from "./DevCreateCourseButton";
+import {Button} from 'reactstrap';
+import QuizCreateForm from './QuizCreateForm';
 
-class TeacherView extends Component {
+class TeacherView extends Component{
 
     state = {
         redirect: false,
-        teacher: false
+        teacher: false,
+        showCreateQuiz: true
     };
 
     componentDidMount() {
@@ -19,10 +20,21 @@ class TeacherView extends Component {
         this.props.verifyTeacher(this.props.token);
     }
 
+    onClick = () => {
+        if (!this.state.showCreateQuiz) {
+            this.state.showCreateQuiz = true;
+        }else if (this.state.showCreateQuiz){
+            this.state.showCreateQuiz = false;
+        }
+    };
 
-    render () {
-        if (this.props.redirect) {
-            return <Redirect to="/"/>
+
+    render() {
+
+        this.quizForm = <div/>
+
+        if (this.state.redirect) {
+            return <Redirect to='/'/>;
         }
 
         // Can't redirect but just show nothing.
@@ -31,9 +43,19 @@ class TeacherView extends Component {
             return <div/>
         }
 
-        return(
+        if(this.state.showCreateQuiz){
+            this.quizForm = <QuizCreateForm/>
+        }
+
+
+        return (
             <Container>
-                <DevCreateCourseButton/>
+                <div>
+                    {this.quizForm}
+                    <Button color="dark" size="lg" onClick={this.onClick}>
+                        Create Quiz
+                    </Button>
+                </div>
             </Container>
         );
     }

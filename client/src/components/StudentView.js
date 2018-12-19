@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import ToggleModeButton from "./ToggleModeButton";
 import {connect} from 'react-redux';
+import TeacherView from './TeacherView';
 
 import {verifyStudent, verifyTeacher} from '../actions/userActions'
 import {getCourses} from '../actions/courseActions'
