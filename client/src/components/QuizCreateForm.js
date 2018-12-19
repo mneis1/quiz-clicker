@@ -13,11 +13,15 @@ class QuizCreateForm extends Component{
             data: [...prevState.data, {Question: "", Choice1: "", Choice2: "", Choice3: "", CorrectAnswer: ""}],
         }));
     }
+
+    handleSubmit = (e) => {
+        e.preventDefault()
+    }
     render() {
         let {data} = this.state;
 
         return(
-                <form>
+                <form onSubmit={this.handleSubmit}>
                     <button onClick={this.addQuestion}>Add new question</button>
                     {
                         data.map((val, idx) => {
