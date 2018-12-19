@@ -45,7 +45,7 @@ class TeacherView extends Component{
             <Container>
                 <div>
 
-                    <Button color="dark" size="lg" onClick={this.onClick}>
+                    <Button color="dark" size="lg" /*onClick={this.onClick}*/>
                         Create Quiz
                     </Button>
                 </div>
