@@ -14,12 +14,8 @@ class QuizCreateForm extends Component{
         }));
     }
 
-    submitQuiz = (e) => {
-        const dataJSON = JSON.stringify(this.state.data);
-        console.log(dataJSON)
-    }
-
     handleSubmit = (e) => {
+        const dataJSON = JSON.stringify(this.state.data);
         e.preventDefault()
     }
 
