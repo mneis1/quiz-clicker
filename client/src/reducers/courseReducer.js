@@ -6,7 +6,7 @@ import {
 } from "../actions/types";
 
 const initialState = {
-    courses: null
+    courses: []
 };
 
 export default function(state = initialState, action) {

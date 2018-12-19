@@ -23,7 +23,6 @@ class DevButton extends Component {
             for (let i = 0; i < this.props.courses.length; i++) {
                 if (this.props.courses[i].quiz) {
                     console.log(this.props.courses[i].name);
-                    console.log("Questions: " + this.props.courses[i].quiz);
                     this.props.getQuestions(this.props.courses[i].quiz);
 
                     for (let j = 0; j < this.props.questions.length; j++) {

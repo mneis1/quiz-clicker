@@ -8,6 +8,7 @@ import {Container} from "reactstrap";
 import {Redirect} from "react-router";
 import {getQuestions} from "../actions/quizActions";
 import DevButton from "./DevButton";
+import CourseList from "./CourseList";
 
 class StudentView extends Component {
 
@@ -46,6 +47,7 @@ class StudentView extends Component {
                 <div/>
             }
             <DevButton/>
+            <CourseList/>
             </Container>
         );
     }
