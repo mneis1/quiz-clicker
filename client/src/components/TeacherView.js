@@ -6,7 +6,8 @@ import {verifyStudent, verifyTeacher} from '../actions/userActions'
 import {Container} from "reactstrap";
 import {Redirect} from "react-router";
 import {Button} from 'reactstrap';
-import QuizCreateForm from './QuizCreateForm';
+import QuizCreateForm from './forms/QuizCreateForm';
+import {verifyStudent, verifyTeacher} from "../actions/userActions";
 
 class TeacherView extends Component{
 
@@ -22,11 +23,7 @@ class TeacherView extends Component{
     }
 
     onClick = () => {
-        if (!this.state.showCreateQuiz) {
-            this.state.showCreateQuiz = true;
-        }else if (this.state.showCreateQuiz){
-            this.state.showCreateQuiz = false;
-        }
+        this.setState({showCreateQuiz: !this.state.showCreateQuiz});
     };
 
 

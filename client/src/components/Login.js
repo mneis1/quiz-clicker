@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import store from "../store";
 import AppNavBar from "./AppNavbar";
-import LoginForm from "./LoginForm";
+import LoginForm from "./forms/LoginForm";
 import Provider from "react-redux/es/components/Provider";
 
 class Login extends Component {

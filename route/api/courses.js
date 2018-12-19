@@ -6,6 +6,31 @@ const settings = require('../../config/settings');
 const Course = require('../../model/Course');
 const User = require('../../model/User');
 
+// Returns a list of course objects the teacher is a teacher of
+router.post('/findTeaching', (req, res) => {
+    const token = req.body.token;
+
+    jwt.verify(token, settings.secret, (err, data) => {
+        if (err) {
+            res.sendStatus(403);
+            return;
+        }
+        User.findOne({"email": data.email})
+            .then(user => {
+                if (user == null || !user.type) {
+                    res.sendStatus(404);
+                }
+
+                Course.find({"teacherId": user._id})
+                    .then(courses => {
+                        res.json({courses});
+                        res.status(200);
+                    });
+
+            });
+    });
+});
+
 // Returns a list of course objects the student is in
 router.post('/find', (req, res) => {
     const token = req.body.token;
