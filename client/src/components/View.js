@@ -16,7 +16,7 @@ class View extends Component {
             <Provider store={store}>
                 <div className="View">
                     {
-                        this.props.teacher ?  <TeacherView/> : <div/>
+                        this.props.nextMode ?  <TeacherView/> : <div/>
                     }
                     <AppNavBar/>
                     <StudentView/>
