@@ -7,7 +7,7 @@ import {Container} from "reactstrap";
 import {Redirect} from "react-router";
 import StudentView from "./StudentView";
 import {Button} from 'reactstrap';
-import QuizCreateForm from "QuizCreateForm";
+import QuizCreateForm from "./QuizCreateForm";
 
 class TeacherView extends Component{
 
