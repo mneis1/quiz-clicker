@@ -48,7 +48,7 @@ class QuizCreateForm extends Component{
                     <button onClick={this.addQuestion}>Add new question</button>
                     {
                         data.map((val, idx) => {
-                            let questionId = `question-${idx}`, choice1Id = `${idx}`, choice2Id = `${idx}`, choice3Id = `${idx}`, correctChoiceId = `correctChoice-${idx}`;
+                            let questionId = `question-${idx}`, choice1Id = `choice1-${idx}`, choice2Id = `choice2-${idx}`, choice3Id = `choice3-${idx}`, correctChoiceId = `correctChoice-${idx}`;
                             return(
                                 <div key={idx}>
                                     <div>
@@ -57,21 +57,21 @@ class QuizCreateForm extends Component{
                                     </div>
                                     <div>
                                         <label htmlFor={choice1Id}>{`Choice 1`}</label>
-                                        <input type="text" name={choice1Id} data-id={idx} id={choice1Id} value={data[idx].choices[1]} className="choices[1]"/>
+                                        <input type="text" name={choice1Id} data-id={idx} id={choice1Id} value={data[idx].choices[0]} className="Choice1"/>
                                     </div>
                                     <div>
                                         <label htmlFor={choice2Id}>{`Choice 2`}</label>
-                                        <input type="text" name={choice2Id} data-id={idx} id={choice2Id} value={data[idx].choices[2]} className="choices[2]"/>
+                                        <input type="text" name={choice2Id} data-id={idx} id={choice2Id} value={data[idx].choices[1]} className="Choice2"/>
                                     </div>
 
                                     <div>
                                         <label htmlFor={choice3Id}>{`Choice 3`}</label>
-                                        <input type="text" name={choice3Id} data-id={idx} id={choice3Id} value={data[idx].choices[3]} className="choices[3]"/>
+                                        <input type="text" name={choice3Id} data-id={idx} id={choice3Id} value={data[idx].choices[2]} className="Choice3"/>
                                     </div>
 
                                     <div>
                                         <label htmlFor={correctChoiceId}>{`Correct choice`}</label>
-                                        <input type="text" name={correctChoiceId} data-id={idx} id={correctChoiceId} value={data[idx].choices[4]} className="choices[4]"/>
+                                        <input type="text" name={correctChoiceId} data-id={idx} id={correctChoiceId} value={data[idx].choices[3]} className="CorrectAnswer"/>
                                     </div>
 
                                 </div>
