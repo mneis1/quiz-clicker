@@ -23,7 +23,6 @@ class View extends Component {
                     <StudentView/>
 
                 </div>
-                <ToggleModeButton/>
             </Provider>
         );
     }
