@@ -36,10 +36,15 @@ class QuizCreateForm extends Component{
 
         return(
                 <form onSubmit={this.handleSubmit} onChange={this.handleChange}>
-                    <label htmlFor="name">Quiz Name: </label>
-                    <input type="text" name="quizName" id="quizName" value={quizName}/>
-                    <label htmlFor="name">Quiz question time limit: </label>
-                    <input type="text" name="quizTime" id="quizTime" value={quizTime}/>
+                    <div>
+                        <label htmlFor="name">Quiz Name: </label>
+                        <input type="text" name="quizName" id="quizName" value={quizName}/>
+                    </div>
+                    <div>
+                        <label htmlFor="name">Quiz question time limit: </label>
+                        <input type="text" name="quizTime" id="quizTime" value={quizTime}/>
+                    </div>
+
                     <button onClick={this.addQuestion}>Add new question</button>
                     {
                         data.map((val, idx) => {
