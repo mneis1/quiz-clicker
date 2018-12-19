@@ -65,11 +65,12 @@ router.post('/create', (req, res) => {
     }
 });
 
-// Answer question, just provide token, numerical index for answer, and questionId :w
+// Answer question, just provide token, numerical index for answer and which question, and quizId :w
 router.post('/answer', (req, res) => {
     const token = req.body.token;
     const index = req.body.answer;
-    const questionId = req.body.questionId;
+    const question = req.body.question;
+    const quizId = req.body.quizId;
 
     if (!token || !index) {
         res.status(406);
@@ -88,13 +89,15 @@ router.post('/answer', (req, res) => {
                 }
 
                 const newRec = new Record();
-                newRec.questionId = questionId;
+                newRec.quizId = quizId;
                 newRec.studentId = user._id;
                 newRec.answer = index;
+                newRec.question = question;
 
                 Record.findOne({
-                    questionId: questionId,
-                    studentId: user._id
+                    quizId: quizId,
+                    studentId: user._id,
+                    question: question
                 }).then(record => {
                    if (record == null) {
                      Record.create(newRec)
