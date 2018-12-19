@@ -12,16 +12,15 @@ class View extends Component {
         teacher: false
     };
 
+
     render () {
         return (
             <Provider store={store}>
                 <div className="View">
-                    {
-                        this.props.nextMode ?  <TeacherView/> : <div/>
-                    }
+
                     <AppNavBar/>
                     <StudentView/>
-
+                    <TeacherView/>
                 </div>
             </Provider>
         );
