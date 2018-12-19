@@ -1,9 +1,11 @@
 import {
     COURSE_ADD_USER,
     COURSE_CREATE,
+    COURSE_FIND
 } from "../actions/types";
 
 const initialState = {
+    courses: null
 };
 
 export default function(state = initialState, action) {
@@ -16,7 +18,14 @@ export default function(state = initialState, action) {
             return {
                 ...state,
             };
+        case COURSE_FIND:
+            return {
+                ...state,
+                courses: action.payload
+            };
         default:
-            return state;
+            return {
+                ...state
+            };
     }
 }

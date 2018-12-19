@@ -3,8 +3,10 @@ import ToggleModeButton from "./ToggleModeButton";
 import {connect} from 'react-redux';
 
 import {verifyStudent, verifyTeacher} from '../actions/userActions'
+import {getCourses} from '../actions/courseActions'
 import {Container} from "reactstrap";
 import {Redirect} from "react-router";
+import DevGetCoursesButton from "./DevGetCoursesButton";
 
 class StudentView extends Component {
 
@@ -41,6 +43,7 @@ class StudentView extends Component {
                     :
                 <div/>
             }
+            <DevGetCoursesButton/>
             </Container>
         );
     }
