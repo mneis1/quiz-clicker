@@ -36,7 +36,6 @@ class StudentView extends Component {
                    :
                "Student"
             }
-            <TeacherView/>
             {
                 this.props.teacher ?
                 <ToggleModeButton/>

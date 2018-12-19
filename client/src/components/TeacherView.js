@@ -4,8 +4,8 @@ import {connect} from 'react-redux';
 
 import {Container} from "reactstrap";
 import {Redirect} from "react-router";
-import StudentView from "./StudentView";
 import {Button} from 'reactstrap';
+import QuizCreateForm from './QuizCreateForm';
 
 class TeacherView extends Component{
 
@@ -26,6 +26,9 @@ class TeacherView extends Component{
 
 
     render() {
+
+        this.quizForm = <div/>
+
         if (this.state.redirect) {
             return <Redirect to='/'/>;
         }
@@ -35,13 +38,14 @@ class TeacherView extends Component{
         }
 
         if(this.state.showCreateQuiz){
-
+            this.quizForm = <QuizCreateForm/>
         }
 
 
         return (
             <Container>
                 <div>
+                    {this.quizForm}
                     <Button color="dark" size="lg" onClick={this.onClick}>
                         Create Quiz
                     </Button>
