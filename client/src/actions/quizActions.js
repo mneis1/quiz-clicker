@@ -2,8 +2,24 @@ import axios from 'axios';
 import {
     QUIZ_CREATE,
     QUIZ_CREATE_FAILED,
-    QUIZ_ANSWER
+    QUIZ_ANSWER,
+    GET_QUESTIONS
 } from "./types";
+
+export const getQuestions = (quizId) => dispatch => {
+    console.log("dsadasdsadsa " );
+    axios
+        .post('/api/quiz/questions', {quizId})
+        .then(res =>
+            dispatch({
+                type: GET_QUESTIONS,
+                payload: res.data
+            }))
+        .catch(res =>
+            dispatch({
+                type: GET_QUESTIONS
+            }))
+};
 
 export const createQuiz = (quizJson) => dispatch => {
     axios

@@ -110,4 +110,37 @@ router.post('/answer', (req, res) => {
     });
 });
 
+
+router.post('/questions', (req, res) => {
+    const quizId = req.body.quizId;
+    let returnVals = [];
+    console.log("6564");
+
+
+    if (!quizId) {
+        res.status(406);
+        return;
+    }
+
+
+    Quiz.findOne({"_id": quizId})
+        .then(quiz => {
+           const questionIds = quiz.questionIds;
+           for (let i = 0; i < questionIds.length; i++) {
+                Question.findOne({"_id": questionIds[i]})
+                    .then(question => {
+                        returnVals.push({
+                            question: question.question,
+                            choices: question.choices
+                        });
+                        console.log("herte");
+
+                        if (returnVals.length === questionIds.length)
+                            res.sendStatus(200);
+                            return;
+                    });
+           }
+        });
+});
+
 module.exports = router;

@@ -7,6 +7,6 @@ import quizReducer from "./quizReducer";
 export default combineReducers({
     users: userReducer,
     courses: courseReducer,
-    quizes: quizReducer,
+    quizzes: quizReducer,
     mode: toggleModeReducer
 })

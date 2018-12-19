@@ -6,6 +6,7 @@ import {verifyStudent, verifyTeacher} from '../actions/userActions'
 import {getCourses} from '../actions/courseActions'
 import {Container} from "reactstrap";
 import {Redirect} from "react-router";
+import {getQuestions} from "../actions/quizActions";
 
 class StudentView extends Component {
 
@@ -39,6 +40,14 @@ class StudentView extends Component {
             for (let i = 0; i < this.props.courses.length; i++) {
                 if (this.props.courses[i].quiz) {
                     console.log(this.props.courses[i].name);
+                    console.log("Questions: " + this.props.courses[i].quiz);
+                    getQuestions(this.props.courses[i].quiz);
+
+                    for (let j = 0; j < this.props.questions.length; j++) {
+                        console.log(this.props.questions[j].question)
+                    }
+
+                    console.log("")
                 }
             }
         }
@@ -65,7 +74,8 @@ class StudentView extends Component {
 const mapStateToProps = (state) => ({
     token: state.users.token,
     teacher: state.users.teacher,
-    courses: state.courses.courses
+    courses: state.courses.courses,
+    questions: state.quizzes.questions
 });
 
-export default connect(mapStateToProps, {verifyStudent, verifyTeacher, getCourses})(StudentView);
+export default connect(mapStateToProps, {verifyStudent, verifyTeacher, getCourses, getQuestions})(StudentView);
