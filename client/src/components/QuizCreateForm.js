@@ -21,6 +21,7 @@ class QuizCreateForm extends Component{
 
     handleSubmit = (e) => {
         e.preventDefault()
+        console.log(this.state.data)
     }
 
     handleChange = (e) => {
@@ -57,7 +58,7 @@ class QuizCreateForm extends Component{
                             );
                         })
                     }
-                    <input type="submit" value="Submit" onClick={this.submitQuiz}/>
+                    <input type="submit" value="Submit"/>
                 </form>
         );
     }
