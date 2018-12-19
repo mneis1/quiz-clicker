@@ -7,8 +7,11 @@ import {Container} from "reactstrap";
 import {Redirect} from "react-router";
 import StudentView from "./StudentView";
 import {Button} from 'reactstrap';
+import QuizCreateForm from "QuizCreateForm";
 
 class TeacherView extends Component{
+
+
 
     state = {
         redirect: false,
@@ -26,6 +29,9 @@ class TeacherView extends Component{
 
 
     render() {
+
+        const createQuizForm = (this.state.showCreateQuiz) ? <QuizCreateForm/> : <div/>;
+
         if (this.state.redirect) {
             return <Redirect to='/'/>;
         }
@@ -34,14 +40,11 @@ class TeacherView extends Component{
             return <div/>
         }
 
-        if(this.state.showCreateQuiz){
-
-        }
-
 
         return (
             <Container>
                 <div>
+                    {createQuizForm}
                     <Button color="dark" size="lg" onClick={this.onClick}>
                         Create Quiz
                     </Button>
