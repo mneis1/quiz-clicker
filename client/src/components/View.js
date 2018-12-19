@@ -5,6 +5,7 @@ import StudentView from "./StudentView";
 import AppNavBar from "./AppNavbar";
 import TeacherView from "./TeacherView";
 import {verifyStudent, verifyTeacher} from "../actions/userActions";
+import connect from "react-redux/es/connect/connect";
 
 class View extends Component {
     state = {
@@ -35,4 +36,9 @@ class View extends Component {
     }
 }
 
-export default View;
+const mapStateToProps = (state) =>({
+    token: state.users.token,
+    teacher: state.users.teacher
+});
+
+export default connect(mapStateToProps, {verifyStudent, verifyTeacher})(View);
