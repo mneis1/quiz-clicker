@@ -30,7 +30,7 @@ class TeacherView extends Component{
 
     render() {
 
-        const createQuizForm = (this.state.showCreateQuiz) ? <QuizCreateForm/> : <div/>;
+        //const createQuizForm = (this.state.showCreateQuiz) ? <QuizCreateForm/> : <div/>;
 
         if (this.state.redirect) {
             return <Redirect to='/'/>;

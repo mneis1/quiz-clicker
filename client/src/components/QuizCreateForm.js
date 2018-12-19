@@ -13,9 +13,9 @@ class QuizCreateForm extends Component{
         correctChoice: null
     }
 
-    sendUp = () => {
+    //sendUp = () => {
 
-    }
+    //}
 
     render() {
         return(
