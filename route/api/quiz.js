@@ -124,6 +124,9 @@ router.post('/questions', (req, res) => {
     Quiz.findOne({"_id": quizId})
         .then(quiz => {
            const questionIds = quiz.questionIds;
+
+           console.log("Quiz found");
+
            for (let i = 0; i < questionIds.length; i++) {
                 Question.findOne({"_id": questionIds[i]})
                     .then(question => {
