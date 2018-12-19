@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 
 import {connect} from 'react-redux';
 
-import {verifyStudent, verifyTeacher} from '../actions/userActions'
 import {Container} from "reactstrap";
 import {Redirect} from "react-router";
 import {Button} from 'reactstrap';
