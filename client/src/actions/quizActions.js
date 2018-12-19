@@ -19,9 +19,9 @@ export const createQuiz = (quizJson) => dispatch => {
             }))
 };
 
-export const answerQuestion = (token, quizId, answer, question) => dispatch => {
+export const answerQuestion = (token, questionId, answer) => dispatch => {
     axios
-        .post('/api/quiz/answer', {token, quizId, answer, question})
+        .post('/api/quiz/answer', {token, questionId, answer})
         .then(res =>
             dispatch({
                 type: QUIZ_ANSWER

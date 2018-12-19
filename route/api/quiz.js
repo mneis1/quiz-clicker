@@ -24,10 +24,10 @@ const settings = require('../../config/settings');
     }
  */
 router.post('/create', (req, res) => {
-    const name = req.body.name;
-    const limit = req.body.limit;
-    const courseId = req.body.courseId;
-    const questions = req.body.questions;
+    const name = req.body.quizJson.name;
+    const limit = req.body.quizJson.limit;
+    const courseId = req.body.quizJson.courseId;
+    const questions = req.body.quizJson.questions;
 
     if (!name || !courseId || !questions) {
         res.sendStatus(404);
@@ -65,12 +65,11 @@ router.post('/create', (req, res) => {
     }
 });
 
-// Answer question, just provide token, numerical index for answer and which question, and quizId :w
+// Answer question, just provide token, numerical index for answer , and questionId
 router.post('/answer', (req, res) => {
     const token = req.body.token;
     const index = req.body.answer;
-    const question = req.body.question;
-    const quizId = req.body.quizId;
+    const questionId = req.body.questionId;
 
     if (!token || !index) {
         res.status(406);
@@ -89,15 +88,13 @@ router.post('/answer', (req, res) => {
                 }
 
                 const newRec = new Record();
-                newRec.quizId = quizId;
+                newRec.questionId = questionId;
                 newRec.studentId = user._id;
                 newRec.answer = index;
-                newRec.question = question;
 
                 Record.findOne({
-                    quizId: quizId,
-                    studentId: user._id,
-                    question: question
+                    questionId: questionId,
+                    studentId: user._id
                 }).then(record => {
                    if (record == null) {
                      Record.create(newRec)
