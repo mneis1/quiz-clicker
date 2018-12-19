@@ -15,10 +15,6 @@ class TeacherView extends Component{
         showCreateQuiz: false
     };
 
-    componentDidMount() {
-        this.props.verifyStudent(this.props.token);
-        this.props.verifyTeacher(this.props.token);
-    }
 
     onClick = () => {
         if (!this.state.showCreateQuiz) {
