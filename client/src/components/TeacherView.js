@@ -2,22 +2,31 @@ import React, {Component} from 'react';
 
 import {connect} from 'react-redux';
 
-import {verifyStudent, verifyTeacher} from '../actions/userActions'
 import {Container} from "reactstrap";
 import {Redirect} from "react-router";
 import StudentView from "./StudentView";
+import Button from "reactstrap/src/Button";
 
 class TeacherView extends Component{
 
     state = {
         redirect: false,
-        teacher: false
+        teacher: false,
+        showCreateQuiz: false
     };
 
     componentDidMount() {
         this.props.verifyStudent(this.props.token);
         this.props.verifyTeacher(this.props.token);
     }
+
+    onClick = () => {
+        if (!this.state.showCreateQuiz) {
+            this.state.showCreateQuiz = true;
+        }else if (this.state.showCreateQuiz){
+            this.state.showCreateQuiz = false;
+        }
+    };
 
     render() {
         if (this.state.redirect) {
@@ -28,9 +37,18 @@ class TeacherView extends Component{
             return <div/>
         }
 
+        if(this.state.showCreateQuiz){
+            quizCreationForm = 
+        }
+
+
         return (
             <Container>
-                Cool it works!
+                <div>
+                    <Button color="dark" size="lg" onClick={this.onClick}>
+                        Create Quiz
+                    </Button>
+                </div>
             </Container>
         );
     }
@@ -41,4 +59,4 @@ const mapStateToProps = (state) => ({
     teacher: state.users.teacher
 });
 
-export default connect()(TeacherView);
+export default connect(mapStateToProps)(TeacherView);
