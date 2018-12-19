@@ -50,6 +50,11 @@ router.post('/', (req, res) => {
 // @desc Checks if the user is a teacher or not
 // @access public
 router.post('/isStudent', (req, res) => {
+    if (!req.body.token) {
+        res.sendStatus(404);
+        return;
+    }
+
     jwt.verify(req.body.token, settings.secret, (err, data) => {
         if (err) {
             console.log(err);
@@ -61,6 +66,7 @@ router.post('/isStudent', (req, res) => {
             .then(user => {
                     if (user == null) {
                         res.sendStatus(404);
+                        return;
                     }
                     res.sendStatus(200);
                 }
@@ -74,6 +80,11 @@ router.post('/isStudent', (req, res) => {
 // @desc Checks if the user is a teacher or not
 // @access public
 router.post('/isTeacher', (req, res) => {
+    if (!req.body.token) {
+        res.sendStatus(404);
+        return;
+    }
+
     jwt.verify(req.body.token, settings.secret, (err, data) => {
         if (err) {
             console.log(err);
@@ -85,9 +96,11 @@ router.post('/isTeacher', (req, res) => {
             .then(user => {
                     if (user == null) {
                         res.sendStatus(404);
+                        return;
                     } else {
                         if (!user.type) {
                             res.sendStatus(401);
+                            return;
                         }
                         res.sendStatus(200);
                     }

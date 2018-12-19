@@ -15,6 +15,10 @@ class TeacherView extends Component{
         showCreateQuiz: true
     };
 
+    componentDidMount() {
+        this.props.verifyStudent(this.props.token);
+        this.props.verifyTeacher(this.props.token);
+    }
 
     onClick = () => {
         if (!this.state.showCreateQuiz) {
@@ -33,6 +37,8 @@ class TeacherView extends Component{
             return <Redirect to='/'/>;
         }
 
+        // Can't redirect but just show nothing.
+        // Make sure to protect what it is shown via backend
         if (!this.props.teacher) {
             return <div/>
         }
@@ -60,4 +66,4 @@ const mapStateToProps = (state) => ({
     teacher: state.users.teacher
 });
 
-export default connect(mapStateToProps)(TeacherView);
+export default connect(mapStateToProps, {verifyStudent, verifyTeacher})(TeacherView);

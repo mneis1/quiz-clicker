@@ -11,3 +11,8 @@ export const USER_LOGIN_FAIL = 'USER_LOGIN_FAIL';
 export const LOGOUT = 'LOGOUT';
 
 export const TOGGLE_MODE = 'TOGGLE_MODE';
+
+export const COURSE_ADD_USER = 'COURSE_ADD_USER';
+export const COURSE_CREATE = 'COURSE_CREATE';
+export const COURSE_CREATE_FAIL = 'COURSE_CREATE_FAIL';
+export const COURSE_FIND = 'COURSE_FIND';

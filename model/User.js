@@ -19,6 +19,10 @@ const UserSchema = new Schema({
         type: Boolean,
         default: false
     },
+    courses: {
+        type: Array,
+        default: []
+    },
     date: {
         type: Date,
         default: Date.now()
