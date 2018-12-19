@@ -12,7 +12,7 @@ class TeacherView extends Component{
     state = {
         redirect: false,
         teacher: false,
-        showCreateQuiz: false
+        showCreateQuiz: true
     };
 
 
