@@ -57,21 +57,21 @@ class QuizCreateForm extends Component{
                                     </div>
                                     <div>
                                         <label htmlFor={choice1Id}>{`Choice 1`}</label>
-                                        <input type="text" name={choice1Id} data-id={idx} id={choice1Id} value={data[idx].choices[1]} className="Choice1"/>
+                                        <input type="text" name={choice1Id} data-id={idx} id={choice1Id} value={data[idx].choices[1]} className="choices[1]"/>
                                     </div>
                                     <div>
                                         <label htmlFor={choice2Id}>{`Choice 2`}</label>
-                                        <input type="text" name={choice2Id} data-id={idx} id={choice2Id} value={data[idx].choices[2]} className="Choice2"/>
+                                        <input type="text" name={choice2Id} data-id={idx} id={choice2Id} value={data[idx].choices[2]} className="choices[2]"/>
                                     </div>
 
                                     <div>
                                         <label htmlFor={choice3Id}>{`Choice 3`}</label>
-                                        <input type="text" name={choice3Id} data-id={idx} id={choice3Id} value={data[idx].choices[3]} className="Choice3"/>
+                                        <input type="text" name={choice3Id} data-id={idx} id={choice3Id} value={data[idx].choices[3]} className="choices[3]"/>
                                     </div>
 
                                     <div>
                                         <label htmlFor={correctChoiceId}>{`Correct choice`}</label>
-                                        <input type="text" name={correctChoiceId} data-id={idx} id={correctChoiceId} value={data[idx].choices[4]} className="CorrectAnswer"/>
+                                        <input type="text" name={correctChoiceId} data-id={idx} id={correctChoiceId} value={data[idx].choices[4]} className="choices[4]"/>
                                     </div>
 
                                 </div>
