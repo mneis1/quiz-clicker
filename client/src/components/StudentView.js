@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 
 import {verifyStudent, verifyTeacher} from '../actions/userActions'
 import {getCourses} from '../actions/courseActions'
-import {Container} from "reactstrap";
+import {Container, Label} from "reactstrap";
 import {Redirect} from "react-router";
 import {getQuestions} from "../actions/quizActions";
 import DevButton from "./DevButton";
@@ -34,19 +34,6 @@ class StudentView extends Component {
 
         return(
             <Container>
-            {
-                this.props.teacher ?
-               "Teacher"
-                   :
-               "Student"
-            }
-            {
-                this.props.teacher ?
-                <ToggleModeButton/>
-                    :
-                <div/>
-            }
-            <DevButton/>
             <CourseList/>
             </Container>
         );

@@ -12,7 +12,6 @@ class View extends Component {
                 <div className="View">
                     <AppNavBar/>
                     <StudentView/>
-                    <TeacherView/>
                 </div>
             </Provider>
         );

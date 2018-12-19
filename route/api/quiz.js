@@ -72,7 +72,7 @@ router.post('/answer', (req, res) => {
     const index = req.body.answer;
     const questionId = req.body.questionId;
 
-    if (!token || !index) {
+    if (!token || index === null) {
         res.status(406);
         return;
     }
@@ -88,23 +88,31 @@ router.post('/answer', (req, res) => {
                     res.sendStatus(404);
                 }
 
-                const newRec = new Record();
-                newRec.questionId = questionId;
-                newRec.studentId = user._id;
-                newRec.answer = index;
+                console.log("Answering w/ " + index);
+                console.log("QuestionId " + questionId);
+
 
                 Record.findOne({
                     questionId: questionId,
                     studentId: user._id
                 }).then(record => {
                    if (record == null) {
+                       const newRec = new Record();
+                       newRec.questionId = questionId;
+                       newRec.studentId = user._id;
+                       newRec.answer = index;
                      Record.create(newRec)
                          .then(rec => {
                              res.sendStatus(200);
                          })
                    } else {
-                       Record.save(newRec);
-                       res.sendStatus(200);
+
+                       record.answer = index;
+                       Record.updateOne({_id: record._id}, {
+                           answer: index
+                       }, () => {
+                           res.sendStatus(200);
+                       });
                    }
                 });
             });
@@ -125,14 +133,13 @@ router.post('/questions', (req, res) => {
         .then(quiz => {
            const questionIds = quiz.questionIds;
 
-           console.log("Quiz found");
-
            for (let i = 0; i < questionIds.length; i++) {
                 Question.findOne({"_id": questionIds[i]})
                     .then(question => {
                         returnVals.push({
                             question: question.question,
-                            choices: question.choices
+                            choices: question.choices,
+                            _id: question._id
                         });
 
                         console.log(returnVals);

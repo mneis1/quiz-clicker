@@ -30,7 +30,9 @@ export default function(state = initialState, action) {
                 ...state,
             };
         case ADD_USER:
+            console.log("REGISTERED");
             return {
+                ...state,
                 registerSuccess: true
             };
         case ADD_USER_EXISTS:

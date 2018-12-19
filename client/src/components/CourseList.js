@@ -1,4 +1,4 @@
-import {Button, Container, ListGroup, ListGroupItem} from "reactstrap";
+import {Button, Container, Label, ListGroup, ListGroupItem} from "reactstrap";
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {CSSTransition, TransitionGroup} from 'react-transition-group';
@@ -31,6 +31,7 @@ class CourseList extends Component {
 
         return (
             <Container>
+                    <h1><Label>Courses</Label></h1>
                     <ListGroup>
                         {this.props.courses.map(({name, quiz}) => (
                             <ListGroupItem disabled={!quiz}>
@@ -38,7 +39,7 @@ class CourseList extends Component {
                                 this.props.getQuestions(quiz);
                                 this.setState({answerPad: true})
 
-                            }} disabled={!quiz}>Click me</Button>
+                            }} disabled={!quiz} style={{marginLeft: '20rem'}}>Quiz</Button>
                             </ListGroupItem>
                         ))}
                     </ListGroup>
