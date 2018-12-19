@@ -1,5 +1,6 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
+const mongoose = require('mongoose');
 const router  = express.Router();
 
 const User = require('../../model/User');
@@ -112,16 +113,13 @@ router.post('/answer', (req, res) => {
 
 
 router.post('/questions', (req, res) => {
-    const quizId = req.body.quizId;
+    const quizId = new mongoose.Types.ObjectId(req.body.quiz);
     let returnVals = [];
-    console.log("6564");
-
 
     if (!quizId) {
         res.status(406);
         return;
     }
-
 
     Quiz.findOne({"_id": quizId})
         .then(quiz => {
@@ -133,14 +131,20 @@ router.post('/questions', (req, res) => {
                             question: question.question,
                             choices: question.choices
                         });
-                        console.log("herte");
 
-                        if (returnVals.length === questionIds.length)
-                            res.sendStatus(200);
-                            return;
-                    });
+                        console.log(returnVals);
+
+                        if (returnVals.length === questionIds.length) {
+                            res.json(returnVals);
+                            res.status(200);
+                        }
+                    }).catch(err => {
+                        console.log(err);
+                });
            }
-        });
+        }).catch(err => {
+            console.log(err);
+    });
 });
 
 module.exports = router;

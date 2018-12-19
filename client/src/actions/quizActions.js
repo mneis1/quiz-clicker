@@ -6,10 +6,9 @@ import {
     GET_QUESTIONS
 } from "./types";
 
-export const getQuestions = (quizId) => dispatch => {
-    console.log("dsadasdsadsa " );
+export const getQuestions = (quiz) => dispatch => {
     axios
-        .post('/api/quiz/questions', {quizId})
+        .post('/api/quiz/questions', {quiz})
         .then(res =>
             dispatch({
                 type: GET_QUESTIONS,
