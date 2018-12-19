@@ -19,6 +19,8 @@ export default function(state = initialState, action) {
                 ...state,
             };
         case COURSE_FIND:
+            console.log("Courses JSON?");
+            console.log(JSON.stringify(action.payload));
             return {
                 ...state,
                 courses: action.payload

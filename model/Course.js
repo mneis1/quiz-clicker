@@ -15,8 +15,8 @@ const CourseSchema = new Schema({
         default: []
     },
     quiz: {
-        type: Schema.Types.ObjectId,
-        default: null
+        type: Boolean,
+        default: false
     }
 });
 
