@@ -16,6 +16,7 @@
     "bcrypt": "^3.0.2",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.3",
+    "bson": "^4.0.1",
     "concurrently": "^4.1.0",
     "event-stream": "^4.0.1",
     "express": "^4.16.4",
