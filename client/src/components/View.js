@@ -6,13 +6,28 @@ import AppNavBar from "./AppNavbar";
 import TeacherView from "./TeacherView";
 
 class View extends Component {
+    state = {
+        redirect: false,
+        teacher: false
+    };
+
+    componentDidMount() {
+        this.props.verifyStudent(this.props.token);
+        this.props.verifyTeacher(this.props.token);
+        if (!this.props.token) {
+            this.setState({redirect: true});
+        }
+        this.props.getCourses(this.props.token);
+    }
+
     render () {
         return (
             <Provider store={store}>
                 <div className="View">
+
                     <AppNavBar/>
                     <StudentView/>
-                    <TeacherView/>
+                    {this.state.teacher ? <TeacherView/> : <div/>}
                 </div>
             </Provider>
         );
