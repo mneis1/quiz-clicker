@@ -31,3 +31,5 @@ class QuizCreateForm extends Component{
 
 
 }
+
+export default connect()(QuizCreateForm);
