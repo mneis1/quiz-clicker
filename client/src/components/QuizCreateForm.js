@@ -17,7 +17,6 @@ class QuizCreateForm extends Component{
         let {data} = this.state;
 
         return(
-            <Component>
                 <form>
                     <button onClick={this.addQuestion}>Add new question</button>
                     {
@@ -41,7 +40,6 @@ class QuizCreateForm extends Component{
                     }
                     <input type="submit" value="Submit"/>
                 </form>
-            </Component>
         );
     }
 
