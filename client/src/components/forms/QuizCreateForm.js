@@ -17,6 +17,11 @@ class QuizCreateForm extends Component{
     }
 
     handleSubmit = (e) => {
+
+        var newJsonData = {name: this.state.quizName, courseId: 1, TimeToTakeQuiz: this.state, data:[]};
+        for(var x in this.state['data']){
+            console.log(x)
+        }
         const dataJSON = JSON.stringify(this.state);
         console.log(dataJSON)
         e.preventDefault()
