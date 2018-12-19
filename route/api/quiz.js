@@ -2,6 +2,8 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const router  = express.Router();
 
+const User = require('../../model/User');
+const Record = require('../../model/Record');
 const Question = require('../../model/Question');
 const Quiz = require('../../model/Quiz');
 
@@ -61,6 +63,51 @@ router.post('/create', (req, res) => {
                 }
             });
     }
+});
+
+// Answer question, just provide token, numerical index for answer, and questionId :w
+router.post('/answer', (req, res) => {
+    const token = req.body.token;
+    const index = req.body.answer;
+    const questionId = req.body.questionId;
+
+    if (!token || !index) {
+        res.status(406);
+        return;
+    }
+
+    jwt.verify(token, settings.secret, (err, data) => {
+        if (err) {
+            res.sendStatus(403);
+            return;
+        }
+        User.findOne({"email": data.email})
+            .then(user => {
+                if (user == null) {
+                    res.sendStatus(404);
+                }
+
+                const newRec = new Record();
+                newRec.questionId = questionId;
+                newRec.studentId = user._id;
+                newRec.answer = index;
+
+                Record.findOne({
+                    questionId: questionId,
+                    studentId: user._id
+                }).then(record => {
+                   if (record == null) {
+                     Record.create(newRec)
+                         .then(rec => {
+                             res.sendStatus(200);
+                         })
+                   } else {
+                       Record.save(newRec);
+                       res.sendStatus(200);
+                   }
+                });
+            });
+    });
 });
 
 module.exports = router;

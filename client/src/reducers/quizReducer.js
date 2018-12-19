@@ -1,8 +1,7 @@
 import {
-    COURSE_ADD_USER,
-    COURSE_CREATE,
-    COURSE_FIND,
-    COURSE_FIND_TEACHING, QUIZ_CREATE, QUIZ_CREATE_FAILED
+    QUIZ_ANSWER,
+    QUIZ_CREATE,
+    QUIZ_CREATE_FAILED
 } from "../actions/types";
 
 const initialState = {
@@ -16,6 +15,7 @@ export default function(state = initialState, action) {
                 ...state,
                 quiz: action.payload
             };
+        case QUIZ_ANSWER:
         case QUIZ_CREATE_FAILED:
         default:
             return {
